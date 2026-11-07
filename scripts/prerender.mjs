@@ -10,7 +10,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 const serverEntry = pathToFileURL(join(root, "dist-server", "entry-server.js")).href;
-const { render, getSeo, workToMarkdown, works, SITE_URL, SITE_DESCRIPTION, PERSON, EXPERIENCE, TOOLS, BIO, EMAIL, LINKEDIN_URL, AVAILABILITY } = await import(serverEntry);
+const { render, getSeo, workToMarkdown, works, SITE_URL, SITE_DESCRIPTION, PERSON, EXPERIENCE, TOOLS, BIO, EMAIL, LINKEDIN_URL } = await import(serverEntry);
 const ROBOTS = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
 // The source files hard-code a placeholder origin; swap in the real one (VITE_SITE_URL) for the build.
@@ -76,7 +76,6 @@ writeFileSync(
 );
 
 // llms.txt: plain-language summary for AI assistants (https://llmstxt.org)
-const availability = `${AVAILABILITY.label} from ${AVAILABILITY.date}`;
 const resume = [
   `## Experience`,
   ``,
@@ -97,7 +96,6 @@ const contact = [
   `- Email: ${EMAIL}`,
   `- LinkedIn: ${LINKEDIN_URL}`,
   `- Location: ${PERSON.location}`,
-  `- Availability: ${availability}`,
   ``,
 ];
 

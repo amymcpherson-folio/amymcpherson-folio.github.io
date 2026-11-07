@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
-import AlertBar from "./components/AlertBar";
 import FigmaCursor from "./components/FigmaCursor";
 import ScrollManager from "./components/ScrollManager";
 import Home from "./pages/Home";
@@ -40,7 +39,6 @@ export default function App() {
       >
         Skip to main content
       </a>
-      <AlertBar />
       <FigmaCursor />
       <ScrollManager />
       <AnimatePresence mode="wait" initial={false}>
