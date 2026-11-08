@@ -99,6 +99,11 @@ export interface Work {
   /** Homepage / “More projects” card image (square, 1:1). */
   cardImage?: { src: string; alt: string };
   year?: string;
+  /**
+   * Kept in source, but omitted everywhere public: homepage, case-study URL,
+   * “More projects”, sitemap, and llms files.
+   */
+  hidden?: boolean;
 }
 
 const baseWorks: Work[] = [
@@ -760,6 +765,7 @@ const baseWorks: Work[] = [
     headline: "Vendor Risk Campaign & Brand Refresh",
     company: "UpGuard",
     group: "other",
+    hidden: true,
     tags: ["Visual Design", "Product Design"],
     description:
       "Case study: how Amy McPherson designed UpGuard's Vendor Risk campaign landing page and refreshed the brand with a brighter, more human visual language and a scalable card-based design system.",
@@ -1024,10 +1030,12 @@ const CARD_ALTS: Record<string, string> = {
   "ross-thompson-furniture-website": "The Ross Thompson Furniture website on a desktop monitor and a phone.",
 };
 
-export const works: Work[] = baseWorks.map((w) => ({
-  ...w,
-  cardImage: CARD_ALTS[w.id] ? { src: `/images/cards/${w.id}.jpg`, alt: CARD_ALTS[w.id] } : undefined,
-}));
+export const works: Work[] = baseWorks
+  .filter((w) => !w.hidden)
+  .map((w) => ({
+    ...w,
+    cardImage: CARD_ALTS[w.id] ? { src: `/images/cards/${w.id}.jpg`, alt: CARD_ALTS[w.id] } : undefined,
+  }));
 
 /** Canva first, then Envato, then everything else. Stable within each group. */
 const GROUP_ORDER = { canva: 0, envato: 1, other: 2 } as const;
