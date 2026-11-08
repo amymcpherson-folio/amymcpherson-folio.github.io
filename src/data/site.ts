@@ -28,7 +28,7 @@ export const SITE_TITLE = "Amy McPherson | Product Designer at Canva — UX/UI, 
 export const SITE_DESCRIPTION =
   "Amy McPherson is a Product Designer at Canva in Melbourne. Portfolio of product design, digital design and UX/UI case studies: AI landing page tooling, design systems, conversion-focused B2B SaaS design and accessible web design.";
 
-/** Announcement bar shown at the top of every page. */
+/** Availability line used in llms.txt. Not shown on the site. */
 export const AVAILABILITY = { label: "Available for work", date: "February 1st, 2027" };
 
 /** Default social share image (1200x630). Case studies use their own card image. */
